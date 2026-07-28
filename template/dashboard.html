@@ -15,27 +15,273 @@
   <link rel="icon"
     href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/images/growtopia.ico"
     type="image/x-icon">
-  <!-- include bootstrap and custom  css -->
   <link media="all" rel="stylesheet"
     href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/css/faq-main.css">
-  <!-- include custom  css -->
   <link media="all" rel="stylesheet"
     href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/css/shop-custom.css">
   <link media="all" rel="stylesheet"
     href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/css/ingame-custom.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    .modal-backdrop {
-      background-color: rgba(0, 0, 0, 0.1) !important;
+    .modal-backdrop { background-color: rgba(0,0,0,0.1) !important; }
+    .modal-backdrop+div { overflow: auto; }
+    .modal-body, .content { padding: 0; }
+
+    /* === MODAL CONTAINER === */
+    #modalShow .modal-dialog { max-width: 700px; width: 96vw; }
+    #modalShow .modal-content {
+      background: #111114;
+      border: 1px solid rgba(220,30,50,0.18);
+      border-radius: 20px;
+      box-shadow:
+        0 32px 80px rgba(0,0,0,0.9),
+        0 0 0 1px rgba(220,30,50,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+      overflow: hidden;
+    }
+    #modalShow .modal-body { padding: 0; }
+    #modalShow .content { padding: 0; }
+    #modalShow .common-box { padding: 0; }
+    #modalShow .container { padding: 0 !important; width: 100% !important; max-width: 100% !important; }
+    #modalShow .row.div-content-center { margin: 0 !important; }
+    #modalShow .col-md-12 { padding: 0 !important; }
+    #modalShow .section-title { display: none !important; }
+
+    /* === SPLIT LAYOUT === */
+    .tam-split { display: flex; min-height: 440px; }
+
+    /* === PANEL KIRI === */
+    .tam-left {
+      width: 42%;
+      background:
+        radial-gradient(ellipse at 40% 10%, rgba(255,60,60,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 90%, rgba(180,0,20,0.25) 0%, transparent 50%),
+        linear-gradient(175deg, #1e0608 0%, #2a0a0c 40%, #160305 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 44px 24px;
+      position: relative;
+      overflow: hidden;
+      border-right: 1px solid rgba(220,30,50,0.12);
     }
 
-    .modal-backdrop+div {
-      overflow: auto;
+    /* Glow strip kanan */
+    .tam-left::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 1px; height: 100%;
+      background: linear-gradient(180deg, transparent, rgba(220,30,50,0.5), transparent);
     }
 
-    .modal-body,
-    .content {
-      padding: 0;
+    /* Lingkaran dekorasi */
+    .tam-deco1 {
+      position: absolute;
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      border: 1px solid rgba(220,30,50,0.1);
+      bottom: -100px; right: -90px;
     }
+    .tam-deco2 {
+      position: absolute;
+      width: 130px; height: 130px;
+      border-radius: 50%;
+      border: 1px solid rgba(220,30,50,0.08);
+      top: -45px; left: -45px;
+    }
+    .tam-deco3 {
+      position: absolute;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: rgba(220,30,50,0.06);
+      top: 40px; right: 30px;
+    }
+
+    /* Logo TAMTOPIA */
+    .tam-logo-wrap {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    .tam-logo {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 40px;
+      color: #fff;
+      letter-spacing: 3px;
+      line-height: 1;
+      display: block;
+    }
+    .tam-logo-bar {
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, #dc1e32, #ff4455);
+      border-radius: 2px;
+      margin: 10px auto 0;
+      box-shadow: 0 0 12px rgba(220,30,50,0.6);
+    }
+    .tam-logo-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-top: 10px;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    /* Teks welcome */
+    .tam-welcome {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 36px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      letter-spacing: 0.5px;
+    }
+    .tam-welcome-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      text-align: center;
+      margin-top: 8px;
+      line-height: 1.7;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Dot ornament */
+    .tam-dots {
+      display: flex;
+      gap: 6px;
+      margin-top: 28px;
+      position: relative;
+      z-index: 2;
+    }
+    .tam-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(220,30,50,0.35);
+    }
+    .tam-dot.active {
+      background: #dc1e32;
+      box-shadow: 0 0 8px rgba(220,30,50,0.7);
+    }
+
+    /* === PANEL KANAN === */
+    .tam-right {
+      width: 58%;
+      background: #111114;
+      padding: 44px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .tam-form-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 24px;
+      color: #fff;
+      margin: 0 0 4px 0;
+      letter-spacing: -0.3px;
+    }
+    .tam-form-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 30px;
+    }
+
+    /* Input underline */
+    #modalShow .form-control.grow-text {
+      background: transparent !important;
+      border: none !important;
+      border-bottom: 1.5px solid rgba(255,255,255,0.1) !important;
+      border-radius: 0 !important;
+      color: #fff !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      height: 44px !important;
+      padding: 8px 0 !important;
+      box-shadow: none !important;
+      transition: border-color 0.25s !important;
+      width: 100% !important;
+    }
+    #modalShow .form-control.grow-text:focus {
+      border-bottom-color: #dc1e32 !important;
+      box-shadow: none !important;
+      outline: none !important;
+      background: transparent !important;
+    }
+    #modalShow .form-control.grow-text::placeholder {
+      color: rgba(255,255,255,0.2) !important;
+    }
+    #modalShow .form-group { margin-bottom: 18px; }
+
+    /* Tombol */
+    #modalShow .btn.grow-button {
+      background: linear-gradient(135deg, #dc1e32 0%, #a8001a 100%) !important;
+      border: none !important;
+      border-radius: 50px !important;
+      color: #fff !important;
+      font-family: 'Inter', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: 14px !important;
+      letter-spacing: 0.5px !important;
+      padding: 13px !important;
+      width: 100% !important;
+      height: auto !important;
+      cursor: pointer !important;
+      box-shadow: 0 4px 20px rgba(220,30,50,0.35), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s !important;
+      margin-top: 6px !important;
+    }
+    #modalShow .btn.grow-button:hover {
+      opacity: 0.88 !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 8px 28px rgba(220,30,50,0.5), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+    }
+    #modalShow .btn.grow-button:active { transform: translateY(0) !important; }
+    #modalShow .btn.grow-button:disabled { opacity: 0.4 !important; cursor: not-allowed !important; }
+
+    /* Links */
+    #modalShow .forgot-password a,
+    #modalShow #toggleLogin,
+    #modalShow #toggleRegister {
+      color: #dc1e32 !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 13px !important;
+      text-decoration: none !important;
+      transition: color 0.2s !important;
+    }
+    #modalShow .forgot-password a:hover,
+    #modalShow #toggleLogin:hover,
+    #modalShow #toggleRegister:hover {
+      color: #ff4455 !important;
+      text-decoration: underline !important;
+    }
+    #modalShow .forgot-password {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+    #modalShow .form-group.text-center { text-align: left !important; }
+
+    .hidden { display: none !important; }
   </style>
 </head>
 
@@ -43,7 +289,7 @@
   <button type="button" class="btn btn-primary hidden" data-toggle="modal" id="modalButton" data-target="#modalShow"
     data-backdrop="static" data-keyboard="false"></button>
   <div class="content">
-    <section class="common-box ">
+    <section class="common-box">
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-sm-12">
@@ -52,160 +298,90 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-body">
-                      <div class="content">
-                        <section class="common-box ">
-                          <div class="container">
-                            <div class="section-title center-align">
-                              <h2>Log in with your Grow ID</h2>
-                            </div>
-                            <div class="row div-content-center">
-                              <div class="col-md-12 col-sm-12">
-                                <form method="POST" id="loginForm" action="/player/growid/login/validate"
-                                  accept-charset="UTF-8" class="" role="form" autocomplete="off">
-                                  <input name="_token" type="hidden" value="{{ data }}">
-                                  <div class="form-group">
-                                    <input id="login-name" class="form-control grow-text" required="required"
-                                      placeholder="Your Growtopia Name *" name="growId" value="" type="text"
-                                      pattern="[A-Za-z0-9]+" title="Only letters and numbers are allowed">
-                                  </div>
-                                  <div class="form-group">
-                                    <input id="password" class="form-control grow-text" required="required"
-                                      placeholder="Your Growtopia Password *" name="password" type="password" value=""
-                                      pattern="[A-Za-z0-9@._!\-]+"
-                                      title="Only letters, numbers, and @ . _ ! - are allowed">
-                                  </div>
-                                  <div class="form-group text-center forgot-password">
-                                    <a href="https://www.growtopiagame.com/account" target="_blank">Forgot Password</a>
-                                    <br>
-                                    <a href="#" id="toggleRegister" style="margin-top: 5px; display: inline-block;">Register Account</a>
-                                  </div>
-                                  <div class="form-group text-center">
-                                    <input class="btn btn-lg btn-primary grow-button" type="submit" value="Log in">
-                                  </div>
-                                </form>
-                                <form method="POST" id="registerForm" action="/player/growid/login/validate" accept-charset="UTF-8" class="hidden" role="form" autocomplete="off">
-                                  <input name="_token" type="hidden" value="{{ data }}">
-                                  <div class="form-group">
-                                    <input id="register-name" class="form-control grow-text" required="required"
-                                      placeholder="Your Growtopia Name *" name="growId" value="" type="text"
-                                      pattern="[A-Za-z0-9]+" title="Only letters and numbers are allowed">
-                                  </div>
-                                  <div class="form-group">
-                                    <input id="register-email" class="form-control grow-text" required="required"
-                                      placeholder="Your Email *" name="email" value="" type="email">
-                                  </div>
-                                  <div class="form-group">
-                                    <input id="register-password" class="form-control grow-text" required="required"
-                                      placeholder="Your Growtopia Password *" name="password" type="password" value=""
-                                      pattern="[A-Za-z0-9@._!\-]+"
-                                      title="Only letters, numbers, and @ . _ ! - are allowed">
-                                  </div>
-                                  <div class="form-group">
-                                    <input id="register-confirm-password" class="form-control grow-text" required="required"
-                                      placeholder="Confirm Password *" name="password_confirmation" type="password" value=""
-                                      pattern="[A-Za-z0-9@._!\-]+"
-                                      title="Only letters, numbers, and @ . _ ! - are allowed">
-                                  </div>
-                                  <div class="form-group text-center">
-                                    <a href="#" id="toggleLogin" style="margin-bottom: 10px; display: inline-block;">Back to Login</a>
-                                  </div>
-                                  <div class="form-group text-center">
-                                    <input class="btn btn-lg btn-primary grow-button" type="submit" value="Register">
-                                  </div>
-                                </form>
-                              </div>
-                            </div>
+                      <div class="tam-split">
+
+                        <!-- PANEL KIRI -->
+                        <div class="tam-left">
+                          <div class="tam-deco1"></div>
+                          <div class="tam-deco2"></div>
+                          <div class="tam-deco3"></div>
+                          <div class="tam-logo-wrap">
+                            <span class="tam-logo">TAMTOPIA</span>
+                            <span class="tam-logo-bar"></span>
                           </div>
-                        </section>
-                      </div>
-                      <style>
-                        .hidden {
-                          display: none !important;
-                        }
-                      </style>
-                      <script>
-                        document.addEventListener('DOMContentLoaded', function () {
-                          const loginForm = document.getElementById('loginForm');
-                          const registerForm = document.getElementById('registerForm');
-                          const toggleRegister = document.getElementById('toggleRegister');
-                          const toggleLogin = document.getElementById('toggleLogin');
-                          const sectionTitle = document.querySelector('.section-title h2');
+                          <div class="tam-logo-sub">Private Server</div>
+                          <div class="tam-welcome">WELCOME BACK!</div>
+                          <div class="tam-welcome-desc">Masuk ke dunia Tamtopia<br>dan mulai petualanganmu.</div>
+                          <div class="tam-dots">
+                            <div class="tam-dot active"></div>
+                            <div class="tam-dot"></div>
+                            <div class="tam-dot"></div>
+                          </div>
+                        </div>
 
-                          // @note toggle to register form
-                          toggleRegister.addEventListener('click', function (e) {
-                            e.preventDefault();
-                            loginForm.classList.add('hidden');
-                            registerForm.classList.remove('hidden');
-                            sectionTitle.textContent = 'Register your Grow ID';
-                          });
+                        <!-- PANEL KANAN -->
+                        <div class="tam-right">
+                          <div class="tam-form-title" id="tamFormTitle">Login</div>
+                          <div class="tam-form-sub" id="tamFormSub">Masukkan GrowID dan password kamu</div>
 
-                          // @note toggle to login form
-                          toggleLogin.addEventListener('click', function (e) {
-                            e.preventDefault();
-                            registerForm.classList.add('hidden');
-                            loginForm.classList.remove('hidden');
-                            sectionTitle.textContent = 'Log in with your Grow ID';
-                          });
+                          <!-- Form Login -->
+                          <form method="POST" id="loginForm" action="/player/growid/login/validate"
+                            accept-charset="UTF-8" role="form" autocomplete="off">
+                            <input name="_token" type="hidden" value="{{ data }}">
+                            <div class="form-group">
+                              <input id="login-name" class="form-control grow-text" required="required"
+                                placeholder="Your Growtopia Name *" name="growId" value="" type="text"
+                                pattern="[A-Za-z0-9]+" title="Only letters and numbers are allowed">
+                            </div>
+                            <div class="form-group">
+                              <input id="password" class="form-control grow-text" required="required"
+                                placeholder="Your Growtopia Password *" name="password" type="password" value=""
+                                pattern="[A-Za-z0-9@._!\-]+"
+                                title="Only letters, numbers, and @ . _ ! - are allowed">
+                            </div>
+                            <div class="form-group text-center forgot-password">
+                              <a href="#" id="toggleRegister" style="display: inline-block;">Register Account</a>
+                            </div>
+                            <div class="form-group text-center">
+                              <input class="btn btn-lg btn-primary grow-button" type="submit" value="Log in">
+                            </div>
+                          </form>
 
-                          // @note login form handlers
-                          const loginSubmitButton = loginForm.querySelector('input[type="submit"]');
-                          const loginNameInput = document.getElementById('login-name');
-                          const passwordInput = document.getElementById('password');
+                          <!-- Form Register -->
+                          <form method="POST" id="registerForm" action="/player/growid/login/validate" accept-charset="UTF-8" class="hidden" role="form" autocomplete="off">
+                            <input name="_token" type="hidden" value="{{ data }}">
+                            <div class="form-group">
+                              <input id="register-name" class="form-control grow-text" required="required"
+                                placeholder="Your Growtopia Name *" name="growId" value="" type="text"
+                                pattern="[A-Za-z0-9]+" title="Only letters and numbers are allowed">
+                            </div>
+                            <div class="form-group">
+                              <input id="register-email" class="form-control grow-text" required="required"
+                                placeholder="Your Email *" name="email" value="" type="email">
+                            </div>
+                            <div class="form-group">
+                              <input id="register-password" class="form-control grow-text" required="required"
+                                placeholder="Your Growtopia Password *" name="password" type="password" value=""
+                                pattern="[A-Za-z0-9@._!\-]+"
+                                title="Only letters, numbers, and @ . _ ! - are allowed">
+                            </div>
+                            <div class="form-group">
+                              <input id="register-confirm-password" class="form-control grow-text" required="required"
+                                placeholder="Confirm Password *" name="password_confirmation" type="password" value=""
+                                pattern="[A-Za-z0-9@._!\-]+"
+                                title="Only letters, numbers, and @ . _ ! - are allowed">
+                            </div>
+                            <div class="form-group text-center">
+                              <a href="#" id="toggleLogin" style="display: inline-block; margin-bottom: 10px;">Back to Login</a>
+                            </div>
+                            <div class="form-group text-center">
+                              <input class="btn btn-lg btn-primary grow-button" type="submit" value="Register">
+                            </div>
+                          </form>
 
-                          loginNameInput.addEventListener('input', function (e) {
-                            this.value = this.value.replace(/[^A-Za-z0-9]/g, '');
-                          });
-
-                          passwordInput.addEventListener('input', function (e) {
-                            this.value = this.value.replace(/[^A-Za-z0-9@._!\-]/g, '');
-                          });
-
-                          loginForm.addEventListener('submit', function (e) {
-                            if (loginSubmitButton.disabled) {
-                              e.preventDefault();
-                              return false;
-                            }
-                            loginSubmitButton.disabled = true;
-                            loginSubmitButton.value = 'Logging in...';
-                          });
-
-                          // @note register form handlers
-                          const registerSubmitButton = registerForm.querySelector('input[type="submit"]');
-                          const registerNameInput = document.getElementById('register-name');
-                          const registerEmailInput = document.getElementById('register-email');
-                          const registerPasswordInput = document.getElementById('register-password');
-                          const registerConfirmPasswordInput = document.getElementById('register-confirm-password');
-
-                          registerNameInput.addEventListener('input', function (e) {
-                            this.value = this.value.replace(/[^A-Za-z0-9]/g, '');
-                          });
-
-                          registerPasswordInput.addEventListener('input', function (e) {
-                            this.value = this.value.replace(/[^A-Za-z0-9@._!\-]/g, '');
-                          });
-
-                          registerConfirmPasswordInput.addEventListener('input', function (e) {
-                            this.value = this.value.replace(/[^A-Za-z0-9@._!\-]/g, '');
-                          });
-
-                          registerForm.addEventListener('submit', function (e) {
-                            if (registerSubmitButton.disabled) {
-                              e.preventDefault();
-                              return false;
-                            }
-
-                            if (registerPasswordInput.value !== registerConfirmPasswordInput.value) {
-                              e.preventDefault();
-                              alert('Passwords do not match!');
-                              return false;
-                            }
-
-                            registerSubmitButton.disabled = true;
-                            registerSubmitButton.value = 'Registering...';
-                          });
-                        });
-                      </script>
-                    </div>
+                        </div><!-- /.tam-right -->
+                      </div><!-- /.tam-split -->
+                    </div><!-- /.modal-body -->
                   </div>
                 </div>
               </div>
@@ -215,45 +391,99 @@
       </div>
     </section>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const loginForm = document.getElementById('loginForm');
+      const registerForm = document.getElementById('registerForm');
+      const toggleRegister = document.getElementById('toggleRegister');
+      const toggleLogin = document.getElementById('toggleLogin');
+      const tamTitle = document.getElementById('tamFormTitle');
+      const tamSub = document.getElementById('tamFormSub');
+
+      toggleRegister.addEventListener('click', function (e) {
+        e.preventDefault();
+        loginForm.classList.add('hidden');
+        registerForm.classList.remove('hidden');
+        tamTitle.textContent = 'Register';
+        tamSub.textContent = 'Buat akun GrowID kamu';
+      });
+
+      toggleLogin.addEventListener('click', function (e) {
+        e.preventDefault();
+        registerForm.classList.add('hidden');
+        loginForm.classList.remove('hidden');
+        tamTitle.textContent = 'Login';
+        tamSub.textContent = 'Masukkan GrowID dan password kamu';
+      });
+
+      // Login handlers
+      const loginSubmitButton = loginForm.querySelector('input[type="submit"]');
+      const loginNameInput = document.getElementById('login-name');
+      const passwordInput = document.getElementById('password');
+
+      loginNameInput.addEventListener('input', function () {
+        this.value = this.value.replace(/[^A-Za-z0-9]/g, '');
+      });
+      passwordInput.addEventListener('input', function () {
+        this.value = this.value.replace(/[^A-Za-z0-9@._!\-]/g, '');
+      });
+      loginForm.addEventListener('submit', function (e) {
+        if (loginSubmitButton.disabled) { e.preventDefault(); return false; }
+        loginSubmitButton.disabled = true;
+        loginSubmitButton.value = 'Logging in...';
+      });
+
+      // Register handlers
+      const registerSubmitButton = registerForm.querySelector('input[type="submit"]');
+      const registerNameInput = document.getElementById('register-name');
+      const registerPasswordInput = document.getElementById('register-password');
+      const registerConfirmPasswordInput = document.getElementById('register-confirm-password');
+
+      registerNameInput.addEventListener('input', function () {
+        this.value = this.value.replace(/[^A-Za-z0-9]/g, '');
+      });
+      registerPasswordInput.addEventListener('input', function () {
+        this.value = this.value.replace(/[^A-Za-z0-9@._!\-]/g, '');
+      });
+      registerConfirmPasswordInput.addEventListener('input', function () {
+        this.value = this.value.replace(/[^A-Za-z0-9@._!\-]/g, '');
+      });
+      registerForm.addEventListener('submit', function (e) {
+        if (registerSubmitButton.disabled) { e.preventDefault(); return false; }
+        if (registerPasswordInput.value !== registerConfirmPasswordInput.value) {
+          e.preventDefault();
+          alert('Passwords do not match!');
+          return false;
+        }
+        registerSubmitButton.disabled = true;
+        registerSubmitButton.value = 'Registering...';
+      });
+    });
+  </script>
 </body>
+
 <!-- JQUERY LIBRARY -->
-<script
-  src="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/js/jquery-3.7.1.min.js"></script>
+<script src="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/js/jquery-3.7.1.min.js"></script>
 <!-- boostrap javascript -->
-<script
-  src="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/js/bootstrap3.min.js"></script>
+<script src="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/js/bootstrap3.min.js"></script>
 <script>
   let clicked = false;
   $("a").click(function () { if (clicked === false) { clicked = true; return true; } $(this).attr("onclick", "return false;"); });
   $('document').ready(function () {
     document.onkeydown = (e) => {
-      if (e.key == 123) {
-        e.preventDefault();
-      }
-      if (e.key == 'F12') {
-        e.preventDefault();
-      }
-      if (e.ctrlKey && e.shiftKey && e.key == 'I') {
-        e.preventDefault();
-      }
-      if (e.ctrlKey && e.key == 'I') {
-        e.preventDefault();
-      }
-      if (e.ctrlKey && e.shiftKey && e.key == 'C') {
-        e.preventDefault();
-      }
-      if (e.ctrlKey && e.shiftKey && e.key == 'J') {
-        e.preventDefault();
-      }
-      if (e.ctrlKey && e.key == 'U') {
-        e.preventDefault();
-      }
+      if (e.key == 123) { e.preventDefault(); }
+      if (e.key == 'F12') { e.preventDefault(); }
+      if (e.ctrlKey && e.shiftKey && e.key == 'I') { e.preventDefault(); }
+      if (e.ctrlKey && e.key == 'I') { e.preventDefault(); }
+      if (e.ctrlKey && e.shiftKey && e.key == 'C') { e.preventDefault(); }
+      if (e.ctrlKey && e.shiftKey && e.key == 'J') { e.preventDefault(); }
+      if (e.ctrlKey && e.key == 'U') { e.preventDefault(); }
     };
     $('#modalButton').trigger('click');
     $('.close').on('click', function () {
-      window.location = "https://login.growtopiagame.com/player/validate/close"
+      window.location = "https://login.growtopiagame.com/player/validate/close";
     });
-    // $('form').submit($('form .grow-button').attr('disabled', 'true'));
 
     var observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
