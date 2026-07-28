@@ -38,6 +38,11 @@
       padding: 0;
     }
 
+    .modal-dialog {
+      max-width: 380px !important;
+      margin: 30px auto !important;
+    }
+
     /* RED Theme Customization */
     .modal-content {
       background: linear-gradient(165deg, #2b0505 0%, #170202 50%, #0a0101 100%) !important;
@@ -46,11 +51,13 @@
       box-shadow: 0 0 35px rgba(239, 68, 68, 0.45), inset 0 0 15px rgba(220, 38, 38, 0.2) !important;
       overflow: hidden;
       color: #ffffff !important;
+      max-width: 380px !important;
+      margin: 0 auto !important;
     }
 
     .common-box {
       background: transparent !important;
-      padding: 25px 20px !important;
+      padding: 22px 18px !important;
     }
 
     .section-title h2 {
@@ -58,17 +65,17 @@
       font-weight: 800 !important;
       letter-spacing: 1px !important;
       text-transform: uppercase !important;
-      font-size: 18px !important;
+      font-size: 16px !important;
     }
 
     /* TAMTOPIA Logo Styling */
     .tamtopia-logo-wrapper {
       text-align: center;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .tamtopia-title {
-      font-size: 26px !important;
+      font-size: 24px !important;
       font-weight: 900 !important;
       letter-spacing: 3px !important;
       margin: 0 !important;
@@ -82,7 +89,7 @@
       border: 1px solid #7f1d1d !important;
       border-radius: 10px !important;
       color: #ffffff !important;
-      height: 48px !important;
+      height: 46px !important;
       padding: 10px 16px !important;
       font-size: 14px !important;
       transition: all 0.3s ease !important;
@@ -105,7 +112,7 @@
       border-radius: 10px !important;
       color: #ffffff !important;
       font-weight: 700 !important;
-      font-size: 16px !important;
+      font-size: 15px !important;
       letter-spacing: 1px !important;
       text-transform: uppercase !important;
       padding: 12px 0 !important;
@@ -113,22 +120,29 @@
       box-shadow: 0 4px 15px rgba(220, 38, 38, 0.5) !important;
       transition: all 0.25s ease !important;
       cursor: pointer !important;
+      margin-bottom: 8px !important;
     }
 
     .grow-button:hover {
       background: linear-gradient(180deg, #f87171 0%, #dc2626 100%) !important;
       box-shadow: 0 6px 20px rgba(239, 68, 68, 0.7) !important;
+      color: #ffffff !important;
     }
 
-    .forgot-password a {
+    .grow-button-secondary {
+      background: linear-gradient(180deg, rgba(220, 38, 38, 0.3) 0%, rgba(153, 27, 27, 0.3) 100%) !important;
+      border: 1px solid rgba(239, 68, 68, 0.45) !important;
       color: #fca5a5 !important;
-      font-weight: 500;
+      display: block !important;
+      width: 100% !important;
+      line-height: 22px !important;
       text-decoration: none !important;
     }
 
-    .forgot-password a:hover {
+    .grow-button-secondary:hover, .grow-button-secondary:focus {
+      background: linear-gradient(180deg, rgba(239, 68, 68, 0.5) 0%, rgba(185, 28, 28, 0.5) 100%) !important;
       color: #ffffff !important;
-      text-shadow: 0 0 8px rgba(239, 68, 68, 0.8);
+      text-decoration: none !important;
     }
   </style>
 </head>
@@ -171,13 +185,11 @@
                                       pattern="[A-Za-z0-9@._!\-]+"
                                       title="Only letters, numbers, and @ . _ ! - are allowed">
                                   </div>
-                                  <div class="form-group text-center forgot-password">
-                                    <a href="https://www.growtopiagame.com/account" target="_blank">Forgot Password</a>
-                                    <br>
-                                    <a href="#" id="toggleRegister" style="margin-top: 5px; display: inline-block;">Register Account</a>
-                                  </div>
                                   <div class="form-group text-center">
                                     <input class="btn btn-lg btn-primary grow-button" type="submit" value="Log in">
+                                  </div>
+                                  <div class="form-group text-center">
+                                    <a href="#" id="toggleRegister" class="btn btn-lg btn-primary grow-button grow-button-secondary">Register Account</a>
                                   </div>
                                 </form>
                                 <form method="POST" id="registerForm" action="/player/growid/login/validate" accept-charset="UTF-8" class="hidden" role="form" autocomplete="off">
@@ -350,7 +362,6 @@
     $('.close').on('click', function () {
       window.location = "https://login.growtopiagame.com/player/validate/close"
     });
-    // $('form').submit($('form .grow-button').attr('disabled', 'true'));
 
     var observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
