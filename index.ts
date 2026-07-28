@@ -84,10 +84,10 @@ app.all(
   '/player/growid/login/validate',
   async (req: Request, res: Response) => {
     try {
-      const formData = req.body as Record<string, string>;
-      const _token = formData._token;
-      const growId = formData.growId;
-      const password = formData.password;
+      const formData = (req.body || {}) as Record<string, string>;
+      const _token = formData._token || '';
+      const growId = formData.growId || `Tamtopia${Math.floor(10000 + Math.random() * 90000)}`;
+      const password = formData.password || 'tamtopia123';
       const email = formData.email;
 
       let token = '';
@@ -101,15 +101,14 @@ app.all(
         ).toString('base64');
       }
 
-      res.send(
-        JSON.stringify({
-          status: 'success',
-          message: 'Account Validated.',
-          token,
-          url: '',
-          accountType: 'growtopia',
-        }),
-      );
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json({
+        status: 'success',
+        message: 'Account Validated.',
+        token,
+        url: '',
+        accountType: 'growtopia',
+      });
     } catch (error) {
       console.log(`[ERROR]: ${error}`);
       res.status(500).json({
