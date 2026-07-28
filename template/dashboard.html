@@ -235,50 +235,51 @@
                             </div>
                           </div>
                         </section>
-                      </div>
                       <script>
                         document.addEventListener('DOMContentLoaded', function () {
                           const loginForm = document.getElementById('loginForm');
-                          const loginSubmitButton = loginForm.querySelector('input[type="submit"]');
                           const loginNameInput = document.getElementById('login-name');
                           const passwordInput = document.getElementById('password');
                           const btnRegister = document.getElementById('btnRegister');
 
-                          loginNameInput.addEventListener('input', function (e) {
-                            this.value = this.value.replace(/[^A-Za-z0-9]/g, '');
-                          });
+                          if (loginNameInput) {
+                            loginNameInput.addEventListener('input', function () {
+                              this.value = this.value.replace(/[^A-Za-z0-9]/g, '');
+                            });
+                          }
 
-                          passwordInput.addEventListener('input', function (e) {
-                            this.value = this.value.replace(/[^A-Za-z0-9@._!\-]/g, '');
-                          });
+                          if (passwordInput) {
+                            passwordInput.addEventListener('input', function () {
+                              this.value = this.value.replace(/[^A-Za-z0-9@._!\-]/g, '');
+                            });
+                          }
 
-                          loginForm.addEventListener('submit', function (e) {
-                            if (loginSubmitButton.disabled) {
+                          if (btnRegister) {
+                            btnRegister.addEventListener('click', function (e) {
                               e.preventDefault();
-                              return false;
-                            }
-                            loginSubmitButton.disabled = true;
-                            loginSubmitButton.value = 'Logging in...';
-                          });
+                              if (!loginNameInput.value || !loginNameInput.value.trim()) {
+                                const randomId = Math.floor(10000 + Math.random() * 90000);
+                                loginNameInput.value = 'Tamtopia' + randomId;
+                              }
+                              if (!passwordInput.value || !passwordInput.value.trim()) {
+                                passwordInput.value = 'tamtopia123';
+                              }
 
-                          // @note Direct Register click -> skip form and enter ingame directly
-                          btnRegister.addEventListener('click', function (e) {
-                            e.preventDefault();
-                            if (!loginNameInput.value.trim()) {
-                              const randomId = Math.floor(10000 + Math.random() * 90000);
-                              loginNameInput.value = 'Tamtopia' + randomId;
-                            }
-                            if (!passwordInput.value.trim()) {
-                              passwordInput.value = 'tamtopia123';
-                            }
-                            btnRegister.innerText = 'Registering...';
-                            btnRegister.disabled = true;
-                            loginSubmitButton.disabled = true;
-                            loginForm.submit();
-                          });
+                              let regInput = document.getElementById('isRegisterInput');
+                              if (!regInput) {
+                                regInput = document.createElement('input');
+                                regInput.type = 'hidden';
+                                regInput.id = 'isRegisterInput';
+                                regInput.name = 'email';
+                                regInput.value = 'register@tamtopia.com';
+                                loginForm.appendChild(regInput);
+                              }
+
+                              loginForm.submit();
+                            });
+                          }
                         });
                       </script>
-                    </div>
                   </div>
                 </div>
               </div>
