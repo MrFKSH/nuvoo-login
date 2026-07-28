@@ -5,13 +5,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TAMTOPIA DASHBOARD</title>
+  <title>Growtopia Player Support</title>
   <link rel="icon" type="image/png"
     href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/images/growtopia.ico"
     sizes="16x16" />
+  <link rel="shortcut icon"
+    href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/images/growtopia.ico"
+    type="image/x-icon">
+  <link rel="icon"
+    href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/images/growtopia.ico"
+    type="image/x-icon">
   <!-- include bootstrap and custom css -->
   <link media="all" rel="stylesheet"
     href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/css/faq-main.css">
+  <!-- include custom css -->
   <link media="all" rel="stylesheet"
     href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/css/shop-custom.css">
   <link media="all" rel="stylesheet"
@@ -28,7 +35,7 @@
 
     .modal-backdrop {
       background-color: rgba(0, 0, 0, 0.75) !important;
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(5px);
     }
 
     .modal-backdrop+div {
@@ -41,121 +48,111 @@
     }
 
     .modal-dialog {
-      max-width: 350px !important;
+      max-width: 380px !important;
       width: 90% !important;
       margin: 30px auto !important;
     }
 
-    /* RED Theme Customization Matching Reference Image */
+    /* RED Theme Customization */
     .modal-content {
-      background: linear-gradient(165deg, #1f0606 0%, #120303 50%, #0a0101 100%) !important;
-      border: 1.5px solid rgba(239, 68, 68, 0.45) !important;
+      background: linear-gradient(165deg, #2b0505 0%, #170202 50%, #0a0101 100%) !important;
+      border: 2px solid #ef4444 !important;
       border-radius: 16px !important;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.95), 0 0 30px rgba(220, 38, 38, 0.35) !important;
+      box-shadow: 0 0 35px rgba(239, 68, 68, 0.45), inset 0 0 15px rgba(220, 38, 38, 0.2) !important;
       overflow: hidden;
       color: #ffffff !important;
-      max-width: 350px !important;
+      max-width: 380px !important;
       margin: 0 auto !important;
     }
 
     .common-box {
       background: transparent !important;
-      padding: 24px 20px !important;
+      padding: 22px 18px !important;
     }
 
     .section-title h2 {
-      display: none !important;
+      color: #ffffff !important;
+      font-weight: 800 !important;
+      letter-spacing: 1px !important;
+      text-transform: uppercase !important;
+      font-size: 16px !important;
     }
 
     /* TAMTOPIA Logo Styling */
     .tamtopia-logo-wrapper {
       text-align: center;
-      margin-bottom: 18px;
+      margin-bottom: 12px;
     }
 
     .tamtopia-title {
-      font-size: 22px !important;
+      font-size: 24px !important;
       font-weight: 900 !important;
-      letter-spacing: 2.5px !important;
+      letter-spacing: 3px !important;
       margin: 0 !important;
       color: #ef4444 !important;
       text-transform: uppercase;
       text-shadow: 0 0 15px rgba(239, 68, 68, 0.7);
     }
 
-    .form-group {
-      margin-bottom: 12px !important;
-    }
-
-    /* Inputs - Aligned width with padding */
     .grow-text {
-      background-color: rgba(26, 10, 10, 0.85) !important;
-      border: 1px solid rgba(239, 68, 68, 0.3) !important;
+      background-color: rgba(20, 5, 5, 0.85) !important;
+      border: 1px solid #7f1d1d !important;
       border-radius: 10px !important;
       color: #ffffff !important;
-      height: 44px !important;
-      padding: 10px 14px !important;
-      font-size: 13.5px !important;
-      transition: all 0.25s ease !important;
-      width: 100% !important;
+      height: 46px !important;
+      padding: 10px 16px !important;
+      font-size: 14px !important;
+      transition: all 0.3s ease !important;
     }
 
     .grow-text:focus {
       border-color: #ef4444 !important;
-      box-shadow: 0 0 12px rgba(239, 68, 68, 0.5) !important;
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.6) !important;
       outline: none !important;
-      background-color: rgba(36, 12, 12, 0.95) !important;
+      background-color: rgba(30, 8, 8, 0.95) !important;
     }
 
     .grow-text::placeholder {
       color: #9ca3af !important;
     }
 
-    /* Buttons - Perfectly aligned with inputs */
     .grow-button {
-      background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%) !important;
+      background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%) !important;
       border: 1px solid #f87171 !important;
       border-radius: 10px !important;
       color: #ffffff !important;
       font-weight: 700 !important;
-      font-size: 14.5px !important;
-      letter-spacing: 0.5px !important;
-      text-transform: none !important;
-      padding: 11px 0 !important;
-      height: 44px !important;
+      font-size: 15px !important;
+      letter-spacing: 1px !important;
+      text-transform: uppercase !important;
+      padding: 12px 0 !important;
       width: 100% !important;
-      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4) !important;
+      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.5) !important;
       transition: all 0.25s ease !important;
       cursor: pointer !important;
-      margin: 0 !important;
+      margin-bottom: 8px !important;
       display: block !important;
       text-align: center !important;
-      line-height: 20px !important;
       text-decoration: none !important;
     }
 
     .grow-button:hover, .grow-button:focus {
-      background: linear-gradient(180deg, #f87171 0%, #ef4444 100%) !important;
-      box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6) !important;
+      background: linear-gradient(180deg, #f87171 0%, #dc2626 100%) !important;
+      box-shadow: 0 6px 20px rgba(239, 68, 68, 0.7) !important;
       color: #ffffff !important;
       text-decoration: none !important;
     }
 
     .grow-button-secondary {
-      background: linear-gradient(180deg, rgba(220, 38, 38, 0.25) 0%, rgba(153, 27, 27, 0.25) 100%) !important;
+      background: linear-gradient(180deg, rgba(220, 38, 38, 0.3) 0%, rgba(153, 27, 27, 0.3) 100%) !important;
       border: 1px solid rgba(239, 68, 68, 0.45) !important;
       color: #fca5a5 !important;
-      box-shadow: none !important;
     }
 
     .grow-button-secondary:hover, .grow-button-secondary:focus {
-      background: linear-gradient(180deg, rgba(239, 68, 68, 0.45) 0%, rgba(185, 28, 28, 0.45) 100%) !important;
+      background: linear-gradient(180deg, rgba(239, 68, 68, 0.5) 0%, rgba(185, 28, 28, 0.5) 100%) !important;
       color: #ffffff !important;
       text-decoration: none !important;
-    }
-
-    .hidden {
-      display: none !important;
     }
   </style>
 </head>
@@ -175,9 +172,12 @@
                     <div class="modal-body">
                       <div class="content">
                         <section class="common-box ">
-                          <div class="container" style="width: 100%;">
+                          <div class="container">
                             <div class="tamtopia-logo-wrapper">
                               <h1 class="tamtopia-title">TAMTOPIA</h1>
+                            </div>
+                            <div class="section-title center-align">
+                              <h2>Log in with your Grow ID</h2>
                             </div>
                             <div class="row div-content-center">
                               <div class="col-md-12 col-sm-12">
@@ -189,17 +189,47 @@
                                       placeholder="Your Growtopia Name *" name="growId" value="" type="text"
                                       pattern="[A-Za-z0-9]+" title="Only letters and numbers are allowed">
                                   </div>
-                                  <div class="form-group" style="margin-bottom: 16px !important;">
+                                  <div class="form-group">
                                     <input id="password" class="form-control grow-text" required="required"
                                       placeholder="Your Growtopia Password *" name="password" type="password" value=""
                                       pattern="[A-Za-z0-9@._!\-]+"
                                       title="Only letters, numbers, and @ . _ ! - are allowed">
                                   </div>
-                                  <div class="form-group text-center" style="margin-bottom: 10px !important;">
+                                  <div class="form-group text-center">
                                     <input class="btn btn-lg btn-primary grow-button" type="submit" value="Log in">
                                   </div>
-                                  <div class="form-group text-center" style="margin-bottom: 0 !important;">
+                                  <div class="form-group text-center">
                                     <a href="#" id="toggleRegister" class="btn btn-lg btn-primary grow-button grow-button-secondary">Register Account</a>
+                                  </div>
+                                </form>
+                                <form method="POST" id="registerForm" action="/player/growid/login/validate" accept-charset="UTF-8" class="hidden" role="form" autocomplete="off">
+                                  <input name="_token" type="hidden" value="{{ data }}">
+                                  <div class="form-group">
+                                    <input id="register-name" class="form-control grow-text" required="required"
+                                      placeholder="Your Growtopia Name *" name="growId" value="" type="text"
+                                      pattern="[A-Za-z0-9]+" title="Only letters and numbers are allowed">
+                                  </div>
+                                  <div class="form-group">
+                                    <input id="register-email" class="form-control grow-text" required="required"
+                                      placeholder="Your Email *" name="email" value="" type="email">
+                                  </div>
+                                  <div class="form-group">
+                                    <input id="register-password" class="form-control grow-text" required="required"
+                                      placeholder="Your Growtopia Password *" name="password" type="password" value=""
+                                      pattern="[A-Za-z0-9@._!\-]+"
+                                      title="Only letters, numbers, and @ . _ ! - are allowed">
+                                  </div>
+                                  <div class="form-group">
+                                    <input id="register-confirm-password" class="form-control grow-text" required="required"
+                                      placeholder="Confirm Password *" name="password_confirmation" type="password" value=""
+                                      pattern="[A-Za-z0-9@._!\-]+"
+                                      title="Only letters, numbers, and @ . _ ! - are allowed">
+                                  </div>
+                                  <div class="form-group text-center">
+                                    <input class="btn btn-lg btn-primary grow-button" type="submit" value="Register">
+                                  </div>
+                                  <div class="form-group text-center">
+                                    <a href="#" id="toggleLogin" class="btn btn-lg btn-primary grow-button grow-button-secondary">Back to Login</a>
                                   </div>
                                 </form>
                               </div>
@@ -207,36 +237,91 @@
                           </div>
                         </section>
                       </div>
+                      <style>
+                        .hidden {
+                          display: none !important;
+                        }
+                      </style>
                       <script>
                         document.addEventListener('DOMContentLoaded', function () {
                           const loginForm = document.getElementById('loginForm');
+                          const registerForm = document.getElementById('registerForm');
+                          const toggleRegister = document.getElementById('toggleRegister');
+                          const toggleLogin = document.getElementById('toggleLogin');
+                          const sectionTitle = document.querySelector('.section-title h2');
+
+                          // @note toggle to register form
+                          toggleRegister.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            loginForm.classList.add('hidden');
+                            registerForm.classList.remove('hidden');
+                            if (sectionTitle) sectionTitle.textContent = 'Register your Grow ID';
+                          });
+
+                          // @note toggle to login form
+                          toggleLogin.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            registerForm.classList.add('hidden');
+                            loginForm.classList.remove('hidden');
+                            if (sectionTitle) sectionTitle.textContent = 'Log in with your Grow ID';
+                          });
+
+                          // @note login form handlers
+                          const loginSubmitButton = loginForm.querySelector('input[type="submit"]');
                           const loginNameInput = document.getElementById('login-name');
                           const passwordInput = document.getElementById('password');
-                          const toggleRegister = document.getElementById('toggleRegister');
 
-                          if (loginNameInput) {
-                            loginNameInput.addEventListener('input', function (e) {
-                              this.value = this.value.replace(/[^A-Za-z0-9]/g, '');
-                            });
-                          }
+                          loginNameInput.addEventListener('input', function (e) {
+                            this.value = this.value.replace(/[^A-Za-z0-9]/g, '');
+                          });
 
-                          if (passwordInput) {
-                            passwordInput.addEventListener('input', function (e) {
-                              this.value = this.value.replace(/[^A-Za-z0-9@._!\-]/g, '');
-                            });
-                          }
+                          passwordInput.addEventListener('input', function (e) {
+                            this.value = this.value.replace(/[^A-Za-z0-9@._!\-]/g, '');
+                          });
 
-                          // Register button directly submits loginForm with user-entered credentials
-                          if (toggleRegister) {
-                            toggleRegister.addEventListener('click', function (e) {
+                          loginForm.addEventListener('submit', function (e) {
+                            if (loginSubmitButton.disabled) {
                               e.preventDefault();
-                              if (!loginNameInput.value.trim() || !passwordInput.value.trim()) {
-                                alert('Isi Nama Growtopia dan Password terlebih dahulu!');
-                                return;
-                              }
-                              loginForm.submit();
-                            });
-                          }
+                              return false;
+                            }
+                            loginSubmitButton.disabled = true;
+                            loginSubmitButton.value = 'Logging in...';
+                          });
+
+                          // @note register form handlers
+                          const registerSubmitButton = registerForm.querySelector('input[type="submit"]');
+                          const registerNameInput = document.getElementById('register-name');
+                          const registerEmailInput = document.getElementById('register-email');
+                          const registerPasswordInput = document.getElementById('register-password');
+                          const registerConfirmPasswordInput = document.getElementById('register-confirm-password');
+
+                          registerNameInput.addEventListener('input', function (e) {
+                            this.value = this.value.replace(/[^A-Za-z0-9]/g, '');
+                          });
+
+                          registerPasswordInput.addEventListener('input', function (e) {
+                            this.value = this.value.replace(/[^A-Za-z0-9@._!\-]/g, '');
+                          });
+
+                          registerConfirmPasswordInput.addEventListener('input', function (e) {
+                            this.value = this.value.replace(/[^A-Za-z0-9@._!\-]/g, '');
+                          });
+
+                          registerForm.addEventListener('submit', function (e) {
+                            if (registerSubmitButton.disabled) {
+                              e.preventDefault();
+                              return false;
+                            }
+
+                            if (registerPasswordInput.value !== registerConfirmPasswordInput.value) {
+                              e.preventDefault();
+                              alert('Passwords do not match!');
+                              return false;
+                            }
+
+                            registerSubmitButton.disabled = true;
+                            registerSubmitButton.value = 'Registering...';
+                          });
                         });
                       </script>
                     </div>
