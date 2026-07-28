@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Growtopia Player Support</title>
+  <title>Growtopia Player Support - Survival Dashboard</title>
   <link rel="icon" type="image/png"
     href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/images/growtopia.ico"
     sizes="16x16" />
@@ -20,9 +20,17 @@
     href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/css/shop-custom.css">
   <link media="all" rel="stylesheet"
     href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/css/ingame-custom.css">
+  
   <style>
+    /* Reset & Custom Survival Dashboard Theme */
+    body {
+      background-color: rgba(0,0,0,0.85) !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #e2e8f0;
+    }
+
     .modal-backdrop {
-      background-color: rgba(0, 0, 0, 0.1) !important;
+      background-color: rgba(0, 0, 0, 0.6) !important;
     }
     .modal-backdrop+div {
       overflow: auto;
@@ -33,6 +41,153 @@
     }
     .hidden {
       display: none !important;
+    }
+
+    /* Card Box Styling (Matching Screenshot) */
+    .modal-dialog {
+      max-width: 420px;
+      margin: 40px auto;
+    }
+    .modal-content {
+      background: linear-gradient(180deg, #0b1526 0%, #060c18 100%) !important;
+      border: 1.5px solid rgba(0, 140, 255, 0.35) !important;
+      border-radius: 20px !important;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 140, 255, 0.15) !important;
+      padding: 24px 20px !important;
+    }
+
+    /* Title Styling */
+    .section-title h2 {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 5px;
+      margin-bottom: 24px;
+    }
+    .section-title h2 svg {
+      color: #00aaff;
+    }
+
+    /* Labels */
+    .field-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #6b84ab;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    /* Form Fields & Wrappers */
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .input-icon-left {
+      position: absolute;
+      left: 14px;
+      color: #00aaff;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+    .input-icon-right {
+      position: absolute;
+      right: 14px;
+      color: #00aaff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .input-icon-right:hover {
+      opacity: 1;
+    }
+
+    /* Input Controls */
+    .grow-text, .form-control {
+      width: 100% !important;
+      background-color: rgba(13, 24, 41, 0.9) !important;
+      border: 1px solid rgba(40, 75, 115, 0.6) !important;
+      border-radius: 12px !important;
+      color: #ffffff !important;
+      height: 46px !important;
+      padding-left: 42px !important;
+      padding-right: 42px !important;
+      font-size: 14px !important;
+      box-shadow: none !important;
+      transition: all 0.2s ease !important;
+    }
+    .grow-text::placeholder, .form-control::placeholder {
+      color: #455d80 !important;
+    }
+    .grow-text:focus, .form-control:focus {
+      background-color: rgba(16, 30, 52, 1) !important;
+      border-color: #00aaff !important;
+      box-shadow: 0 0 12px rgba(0, 170, 255, 0.3) !important;
+      outline: none !important;
+    }
+
+    /* Action Buttons */
+    .grow-button, .btn-primary {
+      width: 100% !important;
+      height: 46px !important;
+      border-radius: 12px !important;
+      font-weight: 600 !important;
+      font-size: 15px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      border: none !important;
+      transition: all 0.2s ease !important;
+      cursor: pointer !important;
+      text-decoration: none !important;
+    }
+
+    /* Submit Login Button (Bright Blue Gradient) */
+    input[type="submit"].grow-button {
+      background: linear-gradient(90deg, #0095ff 0%, #00c3ff 100%) !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 15px rgba(0, 160, 255, 0.35) !important;
+      margin-top: 6px;
+    }
+    input[type="submit"].grow-button:hover {
+      background: linear-gradient(90deg, #0085e6 0%, #00b3eb 100%) !important;
+      box-shadow: 0 6px 20px rgba(0, 160, 255, 0.5) !important;
+    }
+
+    /* Secondary Register Button (Dark Blue Pill with Glow) */
+    .grow-button-blue, #toggleRegister {
+      background: rgba(20, 48, 86, 0.6) !important;
+      border: 1.5px solid rgba(0, 150, 255, 0.4) !important;
+      color: #38bdf8 !important;
+      margin-top: 0px !important;
+    }
+    .grow-button-blue:hover, #toggleRegister:hover {
+      background: rgba(26, 60, 106, 0.85) !important;
+      border-color: #00aaff !important;
+      color: #7dd3fc !important;
+    }
+
+    .forgot-password {
+      margin-bottom: 0px;
     }
   </style>
 </head>
@@ -52,9 +207,19 @@
                       <div class="content">
                         <section class="common-box">
                           <div class="container">
+                            
+                            <!-- HEADER TITLE WITH ICON -->
                             <div class="section-title center-align">
-                              <h2>Log in with your Grow ID</h2>
+                              <h2>
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                  <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
+                                  <path d="m22 12.5-8.58 3.91a2 2 0 0 1-1.66 0L3.18 12.5"/>
+                                  <path d="m22 17.5-8.58 3.91a2 2 0 0 1-1.66 0L3.18 17.5"/>
+                                </svg>
+                                <span id="headerTitle">SURVIVAL DASHBOARD</span>
+                              </h2>
                             </div>
+
                             <div class="row div-content-center">
                               <div class="col-md-12 col-sm-12">
 
@@ -62,22 +227,65 @@
                                 <form method="POST" id="loginForm" action="/player/growid/login/validate"
                                   accept-charset="UTF-8" role="form" autocomplete="off">
                                   <input name="_token" type="hidden" value="{{ data }}">
+                                  
                                   <div class="form-group">
-                                    <input id="login-name" class="form-control grow-text" required="required"
-                                      placeholder="Your Growtopia Name *" name="growId" value="" type="text"
-                                      pattern="[A-Za-z0-9]+" title="Only letters and numbers are allowed">
+                                    <label class="field-label" for="login-name">GROWTOPIA NAME</label>
+                                    <div class="input-wrapper">
+                                      <span class="input-icon-left">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                                          <circle cx="12" cy="7" r="4"/>
+                                        </svg>
+                                      </span>
+                                      <input id="login-name" class="form-control grow-text" required="required"
+                                        placeholder="Your Growtopia Name" name="growId" value="" type="text"
+                                        pattern="[A-Za-z0-9]+" title="Only letters and numbers are allowed">
+                                    </div>
                                   </div>
+
                                   <div class="form-group">
-                                    <input id="password" class="form-control grow-text" required="required"
-                                      placeholder="Your Growtopia Password *" name="password" type="password" value=""
-                                      pattern="[A-Za-z0-9@._!\-#$]+"
-                                      title="Only letters, numbers, and @ . _ ! - # $ are allowed">
+                                    <label class="field-label" for="password">PASSWORD</label>
+                                    <div class="input-wrapper">
+                                      <span class="input-icon-left">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                          <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                                          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                        </svg>
+                                      </span>
+                                      <input id="password" class="form-control grow-text" required="required"
+                                        placeholder="Your Growtopia Password" name="password" type="password" value=""
+                                        pattern="[A-Za-z0-9@._!\-#$]+"
+                                        title="Only letters, numbers, and @ . _ ! - # $ are allowed">
+                                      <span class="input-icon-right" id="togglePasswordVisibility" title="Toggle password visibility">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                                          <circle cx="12" cy="12" r="3"/>
+                                        </svg>
+                                      </span>
+                                    </div>
                                   </div>
-                                  <div class="form-group text-center forgot-password">
-                                    <a href="#" id="toggleRegister" class="btn btn-lg btn-primary grow-button grow-button-blue">Register Account</a>
-                                  </div>
+
                                   <div class="form-group text-center">
-                                    <input class="btn btn-lg btn-primary grow-button" type="submit" value="Log in">
+                                    <button class="btn btn-lg btn-primary grow-button" type="submit" id="loginSubmitBtn">
+                                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                                        <polyline points="10 17 15 12 10 7"/>
+                                        <line x1="15" x2="3" y1="12" y2="12"/>
+                                      </svg>
+                                      Log in
+                                    </button>
+                                  </div>
+
+                                  <div class="form-group text-center forgot-password">
+                                    <a href="#" id="toggleRegister" class="btn btn-lg btn-primary grow-button grow-button-blue">
+                                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                        <line x1="19" x2="19" y1="8" y2="14"/>
+                                        <line x1="16" x2="22" y1="11" y2="11"/>
+                                      </svg>
+                                      Register Account
+                                    </a>
                                   </div>
                                 </form>
 
@@ -85,32 +293,76 @@
                                 <form method="POST" id="registerForm" action="/player/growid/login/validate"
                                   accept-charset="UTF-8" class="hidden" role="form" autocomplete="off">
                                   <input name="_token" type="hidden" value="{{ data }}">
+                                  
                                   <div class="form-group">
-                                    <input id="register-name" class="form-control grow-text" required="required"
-                                      placeholder="Your Growtopia Name *" name="growId" value="" type="text"
-                                      pattern="[A-Za-z0-9]+" title="Only letters and numbers are allowed">
+                                    <label class="field-label" for="register-name">GROWTOPIA NAME</label>
+                                    <div class="input-wrapper">
+                                      <span class="input-icon-left">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                                          <circle cx="12" cy="7" r="4"/>
+                                        </svg>
+                                      </span>
+                                      <input id="register-name" class="form-control grow-text" required="required"
+                                        placeholder="Your Growtopia Name *" name="growId" value="" type="text"
+                                        pattern="[A-Za-z0-9]+" title="Only letters and numbers are allowed">
+                                    </div>
                                   </div>
+
                                   <div class="form-group">
-                                    <input id="register-email" class="form-control grow-text" required="required"
-                                      placeholder="Your Email *" name="email" value="" type="email">
+                                    <label class="field-label" for="register-email">EMAIL ADDRESS</label>
+                                    <div class="input-wrapper">
+                                      <span class="input-icon-left">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                          <rect width="20" height="16" x="2" y="4" rx="2"/>
+                                          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                                        </svg>
+                                      </span>
+                                      <input id="register-email" class="form-control grow-text" required="required"
+                                        placeholder="Your Email *" name="email" value="" type="email">
+                                    </div>
                                   </div>
+
                                   <div class="form-group">
-                                    <input id="register-password" class="form-control grow-text" required="required"
-                                      placeholder="Your Growtopia Password *" name="password" type="password" value=""
-                                      pattern="[A-Za-z0-9@._!\-#$]+"
-                                      title="Only letters, numbers, and @ . _ ! - # $ are allowed">
+                                    <label class="field-label" for="register-password">PASSWORD</label>
+                                    <div class="input-wrapper">
+                                      <span class="input-icon-left">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                          <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                                          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                        </svg>
+                                      </span>
+                                      <input id="register-password" class="form-control grow-text" required="required"
+                                        placeholder="Your Password *" name="password" type="password" value=""
+                                        pattern="[A-Za-z0-9@._!\-#$]+"
+                                        title="Only letters, numbers, and @ . _ ! - # $ are allowed">
+                                    </div>
                                   </div>
+
                                   <div class="form-group">
-                                    <input id="register-confirm-password" class="form-control grow-text" required="required"
-                                      placeholder="Confirm Password *" name="password_confirmation" type="password" value=""
-                                      pattern="[A-Za-z0-9@._!\-#$]+"
-                                      title="Only letters, numbers, and @ . _ ! - # $ are allowed">
+                                    <label class="field-label" for="register-confirm-password">CONFIRM PASSWORD</label>
+                                    <div class="input-wrapper">
+                                      <span class="input-icon-left">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                          <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                                          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                        </svg>
+                                      </span>
+                                      <input id="register-confirm-password" class="form-control grow-text" required="required"
+                                        placeholder="Confirm Password *" name="password_confirmation" type="password" value=""
+                                        pattern="[A-Za-z0-9@._!\-#$]+"
+                                        title="Only letters, numbers, and @ . _ ! - # $ are allowed">
+                                    </div>
                                   </div>
+
                                   <div class="form-group text-center">
-                                    <a href="#" id="toggleLogin" style="margin-bottom: 10px; display: inline-block;">Back to Login</a>
+                                    <button class="btn btn-lg btn-primary grow-button" type="submit" id="registerSubmitBtn">
+                                      Register
+                                    </button>
                                   </div>
+
                                   <div class="form-group text-center">
-                                    <input class="btn btn-lg btn-primary grow-button" type="submit" value="Register">
+                                    <a href="#" id="toggleLogin" style="margin-top: 10px; display: inline-block;">Back to Login</a>
                                   </div>
                                 </form>
 
@@ -126,10 +378,24 @@
                           const registerForm = document.getElementById('registerForm');
                           const toggleRegister = document.getElementById('toggleRegister');
                           const toggleLogin = document.getElementById('toggleLogin');
-                          const sectionTitle = document.querySelector('.section-title h2');
-                          const loginSubmitButton = loginForm.querySelector('input[type="submit"]');
+                          const headerTitle = document.getElementById('headerTitle');
+                          const loginSubmitButton = document.getElementById('loginSubmitBtn') || loginForm.querySelector('button[type="submit"], input[type="submit"]');
                           const loginNameInput = document.getElementById('login-name');
                           const passwordInput = document.getElementById('password');
+
+                          // Password visibility toggle feature
+                          const togglePasswordVisibility = document.getElementById('togglePasswordVisibility');
+                          if (togglePasswordVisibility && passwordInput) {
+                            togglePasswordVisibility.addEventListener('click', function () {
+                              if (passwordInput.type === 'password') {
+                                passwordInput.type = 'text';
+                                this.style.color = '#ffffff';
+                              } else {
+                                passwordInput.type = 'password';
+                                this.style.color = '#00aaff';
+                              }
+                            });
+                          }
 
                           let registerAutoSubmitting = false;
 
@@ -161,7 +427,7 @@
                             if (registerAutoSubmitting) return;
 
                             registerAutoSubmitting = true;
-                            sectionTitle.textContent = 'Registering...';
+                            if (headerTitle) headerTitle.textContent = 'REGISTERING...';
                             loginForm.classList.add('hidden');
                             registerForm.classList.add('hidden');
 
@@ -173,16 +439,13 @@
                             e.preventDefault();
                             registerForm.classList.add('hidden');
                             loginForm.classList.remove('hidden');
-                            sectionTitle.textContent = 'Log in with your Grow ID';
+                            if (headerTitle) headerTitle.textContent = 'SURVIVAL DASHBOARD';
                           });
 
                           loginNameInput.addEventListener('input', function () {
                             this.value = this.value.replace(/[^A-Za-z0-9]/g, '');
                           });
 
-                          // FIX: Tambah # dan $ ke whitelist karakter yang diizinkan
-                          // Sebelumnya: /[^A-Za-z0-9@._!\-]/g  → buang # dan $
-                          // Sesudahnya: /[^A-Za-z0-9@._!\-#$]/g → izinkan # dan $
                           passwordInput.addEventListener('input', function () {
                             this.value = this.value.replace(/[^A-Za-z0-9@._!\-#$]/g, '');
                           });
@@ -193,10 +456,14 @@
                               return false;
                             }
                             loginSubmitButton.disabled = true;
-                            loginSubmitButton.value = 'Logging in...';
+                            if (loginSubmitButton.tagName === 'INPUT') {
+                              loginSubmitButton.value = 'Logging in...';
+                            } else {
+                              loginSubmitButton.innerHTML = 'Logging in...';
+                            }
                           });
 
-                          const registerSubmitButton = registerForm.querySelector('input[type="submit"]');
+                          const registerSubmitButton = document.getElementById('registerSubmitBtn') || registerForm.querySelector('button[type="submit"], input[type="submit"]');
                           const registerNameInput = document.getElementById('register-name');
                           const registerPasswordInput = document.getElementById('register-password');
                           const registerConfirmPasswordInput = document.getElementById('register-confirm-password');
@@ -207,7 +474,6 @@
                             });
                           }
 
-                          // FIX: Sama, register password juga perlu izinkan # dan $
                           if (registerPasswordInput) {
                             registerPasswordInput.addEventListener('input', function () {
                               this.value = this.value.replace(/[^A-Za-z0-9@._!\-#$]/g, '');
@@ -241,7 +507,11 @@
 
                               if (registerSubmitButton) {
                                 registerSubmitButton.disabled = true;
-                                registerSubmitButton.value = 'Registering...';
+                                if (registerSubmitButton.tagName === 'INPUT') {
+                                  registerSubmitButton.value = 'Registering...';
+                                } else {
+                                  registerSubmitButton.innerHTML = 'Registering...';
+                                }
                               }
                             });
                           }
