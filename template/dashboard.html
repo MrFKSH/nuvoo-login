@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Growtopia Player Support - Survival Dashboard</title>
+  <title>Growtopia Player Support - GTPS Dashboard</title>
   <link rel="icon" type="image/png"
     href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/images/growtopia.ico"
     sizes="16x16" />
@@ -22,7 +22,7 @@
     href="https://s3.eu-west-1.amazonaws.com/cdn.growtopiagame.com/website/resources/assets/css/ingame-custom.css">
   
   <style>
-    /* Reset & Viewport Centering */
+    /* Reset Viewport Container */
     html, body {
       background-color: transparent !important;
       background: transparent !important;
@@ -69,11 +69,12 @@
       align-items: center !important;
       justify-content: center !important;
       opacity: 1 !important;
+      max-height: 100vh !important;
     }
 
     .modal-dialog {
       width: 92% !important;
-      max-width: 390px !important; /* Matches reference photo proportions */
+      max-width: 390px !important;
       margin: 0 auto !important;
       position: relative !important;
       top: auto !important;
@@ -83,21 +84,36 @@
       display: none !important;
     }
 
-    /* THE CARD - 100% Identical Structure to Reference Image (Red Theme) */
+    /* THE CARD - Tight Fit Scrollable Box (Mentok Ujung ke Ujung) */
     .modal-content {
-      background: #0f0608 !important; /* Deep dark reddish navy */
+      background: #0f0608 !important;
       border: 1.5px solid rgba(255, 45, 65, 0.45) !important;
-      border-radius: 18px !important;
+      border-radius: 16px !important;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 30, 50, 0.2) !important;
-      padding: 18px 22px !important;
-      overflow: visible !important;
+      padding: 14px 20px !important; /* Tight internal padding */
       width: 100% !important;
+      max-height: 94vh !important;
+      overflow-y: auto !important; /* Enable scroll if height is restricted */
+      overflow-x: hidden !important;
       box-sizing: border-box !important;
     }
 
-    /* Header Title with 3-Layer Stack Icon */
+    /* Custom Sleek Scrollbar */
+    .modal-content::-webkit-scrollbar {
+      width: 4px;
+    }
+    .modal-content::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.2);
+      border-radius: 4px;
+    }
+    .modal-content::-webkit-scrollbar-thumb {
+      background: rgba(255, 42, 61, 0.5);
+      border-radius: 4px;
+    }
+
+    /* Header Title (Mentok Atas) */
     .section-title {
-      margin: 0 0 14px 0 !important;
+      margin: 0 0 12px 0 !important;
       padding: 0 !important;
       text-align: center !important;
       display: block !important;
@@ -105,7 +121,7 @@
 
     .section-title h2 {
       color: #ffffff !important;
-      font-size: 15px !important;
+      font-size: 14.5px !important;
       font-weight: 700 !important;
       letter-spacing: 1.2px !important;
       text-transform: uppercase !important;
@@ -124,20 +140,20 @@
       flex-shrink: 0;
     }
 
-    /* Input Field Labels (Capitalized & Muted Red-Grey) */
+    /* Input Field Labels */
     .field-label {
-      font-size: 10px !important;
+      font-size: 9.5px !important;
       font-weight: 700 !important;
       color: #a85c63 !important;
       letter-spacing: 0.8px !important;
       text-transform: uppercase !important;
-      margin-bottom: 4px !important;
+      margin-bottom: 3px !important;
       display: block !important;
     }
 
     /* Form Groups */
     .form-group {
-      margin-bottom: 10px !important;
+      margin-bottom: 9px !important;
     }
     .input-wrapper {
       position: relative;
@@ -172,17 +188,17 @@
       opacity: 1;
     }
 
-    /* Inputs - Styled exactly like blue reference input boxes */
+    /* Inputs */
     .grow-text, .form-control {
       width: 100% !important;
       background-color: rgba(26, 10, 13, 0.85) !important;
       border: 1px solid rgba(115, 35, 45, 0.6) !important;
-      border-radius: 9px !important;
+      border-radius: 8px !important;
       color: #ffffff !important;
-      height: 38px !important;
+      height: 36px !important;
       padding-left: 36px !important;
       padding-right: 36px !important;
-      font-size: 12.5px !important;
+      font-size: 12px !important;
       box-shadow: none !important;
       transition: all 0.2s ease !important;
       box-sizing: border-box !important;
@@ -197,13 +213,13 @@
       outline: none !important;
     }
 
-    /* Action Buttons (Height 38px, Rounded 9px) */
+    /* Action Buttons */
     .grow-button, .btn-primary {
       width: 100% !important;
-      height: 38px !important;
-      border-radius: 9px !important;
+      height: 36px !important;
+      border-radius: 8px !important;
       font-weight: 600 !important;
-      font-size: 13px !important;
+      font-size: 12.5px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
@@ -215,19 +231,19 @@
       box-sizing: border-box !important;
     }
 
-    /* Primary Log in Button (Vibrant Red Gradient matching reference blue primary button) */
+    /* Log in Button */
     input[type="submit"].grow-button, #loginSubmitBtn {
       background: linear-gradient(90deg, #d90429 0%, #ff2e4d 100%) !important;
       color: #ffffff !important;
       box-shadow: 0 3px 12px rgba(255, 30, 60, 0.35) !important;
-      margin-top: 4px !important;
+      margin-top: 3px !important;
     }
     input[type="submit"].grow-button:hover, #loginSubmitBtn:hover {
       background: linear-gradient(90deg, #b80322 0%, #e62240 100%) !important;
       box-shadow: 0 5px 16px rgba(255, 30, 60, 0.5) !important;
     }
 
-    /* Secondary Register Button (Dark Red Fill with Light Red Border matching blue secondary button) */
+    /* Register Account Button */
     .grow-button-blue, #toggleRegister {
       background: rgba(60, 15, 22, 0.65) !important;
       border: 1.5px solid rgba(255, 42, 61, 0.45) !important;
@@ -252,9 +268,10 @@
       text-decoration: underline !important;
     }
 
+    /* Mentok Bawah */
     .forgot-password {
       margin-bottom: 0px !important;
-      margin-top: 6px !important;
+      margin-top: 5px !important;
     }
   </style>
 </head>
@@ -280,7 +297,7 @@
                           <path d="m22 12.5-8.58 3.91a2 2 0 0 1-1.66 0L3.18 12.5"/>
                           <path d="m22 17.5-8.58 3.91a2 2 0 0 1-1.66 0L3.18 17.5"/>
                         </svg>
-                        <span id="headerTitle">SURVIVAL DASHBOARD</span>
+                        <span id="headerTitle">GTPS DASHBOARD</span>
                       </h2>
                     </div>
 
@@ -504,7 +521,7 @@
         e.preventDefault();
         registerForm.classList.add('hidden');
         loginForm.classList.remove('hidden');
-        if (headerTitle) headerTitle.textContent = 'SURVIVAL DASHBOARD';
+        if (headerTitle) headerTitle.textContent = 'GTPS DASHBOARD';
       });
 
       loginNameInput.addEventListener('input', function () {
