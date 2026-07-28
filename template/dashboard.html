@@ -340,44 +340,14 @@
                                 title="Only letters, numbers, and @ . _ ! - are allowed">
                             </div>
                             <div class="form-group text-center forgot-password">
-                              <a href="#" id="toggleRegister" style="display: inline-block;">Register Account</a>
+                              <a href="growtopia/register" style="display: inline-block;">Register Account</a>
                             </div>
                             <div class="form-group text-center">
                               <input class="btn btn-lg btn-primary grow-button" type="submit" value="Log in">
                             </div>
                           </form>
 
-                          <!-- Form Register -->
-                          <form method="POST" id="registerForm" action="/player/growid/login/validate" accept-charset="UTF-8" class="hidden" role="form" autocomplete="off">
-                            <input name="_token" type="hidden" value="{{ data }}">
-                            <div class="form-group">
-                              <input id="register-name" class="form-control grow-text" required="required"
-                                placeholder="Your Growtopia Name *" name="growId" value="" type="text"
-                                pattern="[A-Za-z0-9]+" title="Only letters and numbers are allowed">
-                            </div>
-                            <div class="form-group">
-                              <input id="register-email" class="form-control grow-text" required="required"
-                                placeholder="Your Email *" name="email" value="" type="email">
-                            </div>
-                            <div class="form-group">
-                              <input id="register-password" class="form-control grow-text" required="required"
-                                placeholder="Your Growtopia Password *" name="password" type="password" value=""
-                                pattern="[A-Za-z0-9@._!\-]+"
-                                title="Only letters, numbers, and @ . _ ! - are allowed">
-                            </div>
-                            <div class="form-group">
-                              <input id="register-confirm-password" class="form-control grow-text" required="required"
-                                placeholder="Confirm Password *" name="password_confirmation" type="password" value=""
-                                pattern="[A-Za-z0-9@._!\-]+"
-                                title="Only letters, numbers, and @ . _ ! - are allowed">
-                            </div>
-                            <div class="form-group text-center">
-                              <a href="#" id="toggleLogin" style="display: inline-block; margin-bottom: 10px;">Back to Login</a>
-                            </div>
-                            <div class="form-group text-center">
-                              <input class="btn btn-lg btn-primary grow-button" type="submit" value="Register">
-                            </div>
-                          </form>
+
 
                         </div><!-- /.tam-right -->
                       </div><!-- /.tam-split -->
@@ -395,29 +365,6 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const loginForm = document.getElementById('loginForm');
-      const registerForm = document.getElementById('registerForm');
-      const toggleRegister = document.getElementById('toggleRegister');
-      const toggleLogin = document.getElementById('toggleLogin');
-      const tamTitle = document.getElementById('tamFormTitle');
-      const tamSub = document.getElementById('tamFormSub');
-
-      toggleRegister.addEventListener('click', function (e) {
-        e.preventDefault();
-        loginForm.classList.add('hidden');
-        registerForm.classList.remove('hidden');
-        tamTitle.textContent = 'Register';
-        tamSub.textContent = 'Buat akun GrowID kamu';
-      });
-
-      toggleLogin.addEventListener('click', function (e) {
-        e.preventDefault();
-        registerForm.classList.add('hidden');
-        loginForm.classList.remove('hidden');
-        tamTitle.textContent = 'Login';
-        tamSub.textContent = 'Masukkan GrowID dan password kamu';
-      });
-
-      // Login handlers
       const loginSubmitButton = loginForm.querySelector('input[type="submit"]');
       const loginNameInput = document.getElementById('login-name');
       const passwordInput = document.getElementById('password');
@@ -432,32 +379,6 @@
         if (loginSubmitButton.disabled) { e.preventDefault(); return false; }
         loginSubmitButton.disabled = true;
         loginSubmitButton.value = 'Logging in...';
-      });
-
-      // Register handlers
-      const registerSubmitButton = registerForm.querySelector('input[type="submit"]');
-      const registerNameInput = document.getElementById('register-name');
-      const registerPasswordInput = document.getElementById('register-password');
-      const registerConfirmPasswordInput = document.getElementById('register-confirm-password');
-
-      registerNameInput.addEventListener('input', function () {
-        this.value = this.value.replace(/[^A-Za-z0-9]/g, '');
-      });
-      registerPasswordInput.addEventListener('input', function () {
-        this.value = this.value.replace(/[^A-Za-z0-9@._!\-]/g, '');
-      });
-      registerConfirmPasswordInput.addEventListener('input', function () {
-        this.value = this.value.replace(/[^A-Za-z0-9@._!\-]/g, '');
-      });
-      registerForm.addEventListener('submit', function (e) {
-        if (registerSubmitButton.disabled) { e.preventDefault(); return false; }
-        if (registerPasswordInput.value !== registerConfirmPasswordInput.value) {
-          e.preventDefault();
-          alert('Passwords do not match!');
-          return false;
-        }
-        registerSubmitButton.disabled = true;
-        registerSubmitButton.value = 'Registering...';
       });
     });
   </script>
