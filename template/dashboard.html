@@ -84,16 +84,18 @@
       display: none !important;
     }
 
-    /* THE CARD - Tight Fit Scrollable Box (Mentok Ujung ke Ujung) */
+    /* THE CARD - Glassmorphism Semi-Transparent Red Theme */
     .modal-content {
-      background: #0f0608 !important;
+      background: rgba(16, 6, 9, 0.82) !important; /* Slightly transparent dark backdrop */
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
       border: 1.5px solid rgba(255, 45, 65, 0.45) !important;
       border-radius: 16px !important;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 30, 50, 0.2) !important;
-      padding: 14px 20px !important; /* Tight internal padding */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 22px rgba(255, 30, 50, 0.25) !important;
+      padding: 14px 20px !important;
       width: 100% !important;
       max-height: 94vh !important;
-      overflow-y: auto !important; /* Enable scroll if height is restricted */
+      overflow-y: auto !important;
       overflow-x: hidden !important;
       box-sizing: border-box !important;
     }
@@ -191,7 +193,7 @@
     /* Inputs */
     .grow-text, .form-control {
       width: 100% !important;
-      background-color: rgba(26, 10, 13, 0.85) !important;
+      background-color: rgba(26, 10, 13, 0.75) !important; /* Semi-transparent inputs */
       border: 1px solid rgba(115, 35, 45, 0.6) !important;
       border-radius: 8px !important;
       color: #ffffff !important;
@@ -204,10 +206,10 @@
       box-sizing: border-box !important;
     }
     .grow-text::placeholder, .form-control::placeholder {
-      color: #6b353b !important;
+      color: #7a3d44 !important;
     }
     .grow-text:focus, .form-control:focus {
-      background-color: rgba(35, 12, 16, 0.95) !important;
+      background-color: rgba(35, 12, 16, 0.9) !important;
       border-color: #ff2a3d !important;
       box-shadow: 0 0 10px rgba(255, 42, 61, 0.35) !important;
       outline: none !important;
@@ -233,7 +235,7 @@
 
     /* Log in Button */
     input[type="submit"].grow-button, #loginSubmitBtn {
-      background: linear-gradient(90deg, #d90429 0%, #ff2e4d 100%) !important;
+      background: linear-gradient(90deg, rgba(217, 4, 41, 0.9) 0%, rgba(255, 46, 77, 0.9) 100%) !important;
       color: #ffffff !important;
       box-shadow: 0 3px 12px rgba(255, 30, 60, 0.35) !important;
       margin-top: 3px !important;
@@ -245,13 +247,13 @@
 
     /* Register Account Button */
     .grow-button-blue, #toggleRegister {
-      background: rgba(60, 15, 22, 0.65) !important;
+      background: rgba(60, 15, 22, 0.55) !important;
       border: 1.5px solid rgba(255, 42, 61, 0.45) !important;
       color: #ff6677 !important;
       margin-top: 0px !important;
     }
     .grow-button-blue:hover, #toggleRegister:hover {
-      background: rgba(80, 20, 30, 0.85) !important;
+      background: rgba(80, 20, 30, 0.8) !important;
       border-color: #ff2a3d !important;
       color: #ff8899 !important;
     }
